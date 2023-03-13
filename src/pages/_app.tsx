@@ -1,6 +1,10 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppProps } from "next/dist/shared/lib/router/router"
+import "../styles/globals.css"
+export default function _app({ Component, pagePros }: AppProps) {
+  return (
+    <div><Component {...pagePros}></Component>
+      <h1>Heloeo</h1>
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+    </div>
+  )
 }
