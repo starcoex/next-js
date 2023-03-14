@@ -1,9 +1,9 @@
-import Navbar from '../components/Navbar';
+import Seo from "../components/Seo"
 export default function AboutUs() {
   return (
     <div>
-      <Navbar />
-      <h1 style={{color:"yellow"}}>About</h1>
+      <Seo title="About" />
+      <h1 style={{ color: "yellow" }}>About</h1>
     </div>
   );
 }
