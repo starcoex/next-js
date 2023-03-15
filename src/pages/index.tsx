@@ -27,13 +27,7 @@ export default function Home() {
   const { isLoading, data } = useQuery<MovieProps>("movies", fetchMovies)
   const router = useRouter()
   const onClick = (id: number, title: string) => {
-    router.push({
-      pathname: `/movies/${id}`,
-      query: {
-        title: title,
-        id: id,
-      },
-    }, `/movies/${id}`)
+    router.push(`/movies/${title}/${id}`)
   }
   return (
     <div className='container'>
@@ -42,12 +36,11 @@ export default function Home() {
         <ul>{data?.results.map((movie) => <div
           onClick={() => onClick(movie.id, movie.title)}
           key={movie.id} className='movie'>
-          <Link href={{
-            pathname: `/movies/${movie.id}`,
-            // query: {
-            //   title: movie.original_title
-            // }
-          }}><img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} /></Link>
+          <Link href={`/movies/${movie.id}`}
+          // query: {
+          //   title: movie.original_title
+          // }
+          ><img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} /></Link>
           <li >{movie.title}</li></div>)}</ul>
       }
       {/* <ul>{results.map((movie: ResultsProps) => <div key={movie.id} className='movie'><img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} /><li >{movie.title}</li></div>)}</ul> */}
@@ -79,7 +72,7 @@ export default function Home() {
         `}
 
       </style>
-    </div>
+    </div >
   )
 }
 // export async function getServerSideProps({ }: GetServerSideProps) {
